@@ -1,28 +1,13 @@
 pipeline {
   agent {
     kubernetes {
-      yaml """
-apiVersion: v1
-kind: Pod
-metadata:
-  labels:
-    repository: testrepository
-spec:
-  containers:
-  - name: ubuntu
-    image: ubuntu
-    command:
-    - cat
-    tty: true
-"""
+      yamlFile 'src/main/build/kubernetes-pod.yaml'
     }
   }
   stages {
-    stage('Hello World') {
-      steps {
-        container('ubuntu') {
-          sh 'echo "Hello World"'
-        }
+    container('ubuntu') {
+      stage('Hello World') {
+        sh 'echo Hello World'
       }
     }
   }
