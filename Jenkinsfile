@@ -5,9 +5,11 @@ pipeline {
     }
   }
   stages {
-    container('ubuntu') {
-      stage('Hello World') {
-        sh 'echo Hello World'
+    stage('Hello World') {
+      steps {
+        container('ubuntu') {
+          sh 'echo Hello World'
+        }
       }
     }
   }
