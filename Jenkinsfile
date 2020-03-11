@@ -12,7 +12,8 @@ spec:
   - name: ubuntu
     image: ubuntu
     command:
-    - cat
+    - sleep
+    - 3600s
     tty: true
 """
     }
